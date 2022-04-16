@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Tienda</title>
+        <link rel="stylesheet" href="css/videos.css">
+    </head>
+    
+    <body>
+        <h1>Lista de Clientes</h1>
+        <a th:href="@{/nuevaPersona}">Nueva Persona</a>
+        <div th:if="${personas != null and !personas.empty}">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellidos</th>
+                        <th>Correo</th>
+                        <th>Teléfono</th>
+                        <th>Eliminar</th>
+                        <th>Modificar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="persona : {personas}">
+                        <td th:text="${persona.nombre}"></td>
+                        <td th:text="${persona.apellidos}"></td>
+                        <td th:text="${persona.correo}"></td>
+                        <td th:text="${persona.telefono}"></td>
+                        <td th:text="${persona.pais}"></td>
+                        <td><a th:href="@{/delete/} + ${persona.id}">Eliminar</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div th:if="${personas == null or personas.empty}">
+            No tenemos lista de personas para mostrar...
+        </div>
+    </body>
+</html>    
+

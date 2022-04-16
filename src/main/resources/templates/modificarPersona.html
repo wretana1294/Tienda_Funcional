@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!-- Pagina Index de los videos del Profe -->
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Modificar Persona</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1 th:text="${titulo}">Datos de Persona</h1>
+        <a href="@{/}">Regresar</a>
+        <br/>
+            <form th:action="@{/guardarPersona}" method="post" th:object="${persona}"><!-- object: indica el objeto que recibirá o que se le pasó -->
+                <label for="nombre">Nombre:</label> 
+                <input type="text" name="nombre" th:field="*{nombre}"/> <!-- field: indica el atributo del objeto, en este caso nombre -->
+                <br/>
+                <label for="apellido1">Apellido 1: </label> 
+                <input type="text" name="apellido1" th:field="*{apellido1}"/> 
+                <br/>
+                <label for="apellido2">Apellido 2:</label> 
+                <input type="text" name="apellido2" th:field="*{apellido2}"/> 
+                <br/>  
+                <label for="telefono">Teléfono:</label> 
+                <input type="tel" name="telefono" th:field="*{telefono}"/> 
+                <br/> 
+                <label for="email">Correo:</label> 
+                <input type="email" name="correo" th:field="*{email}"/> 
+                <br/>                
+                <input type="submit" name="guardar" value="Guardar"/>
+            </form>
+    </body>
+</html>
